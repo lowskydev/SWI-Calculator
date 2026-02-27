@@ -57,6 +57,20 @@ foreach (var entry in doc.RootElement.EnumerateObject())
         value2 = value2Element.GetDouble();
     }
 
+    // Handle negative numbers in square root
+    if (op == "sqrt" && value1 < 0)
+    {
+        Console.WriteLine($"Warning: {objName} has sqrt of negative number (skip)");
+        continue;
+    }
+
+    // Handle division by zero
+    if (op == "div" && value2 == 0)
+    {
+        Console.WriteLine($"Warning: {objName} has division by zero (skip)");
+        continue;
+    }
+
     // Perform the calculation
     double result;
     try
