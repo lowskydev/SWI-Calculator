@@ -10,3 +10,7 @@ obj/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Test / JSON files
+*.txt
+*.json
