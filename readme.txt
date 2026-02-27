@@ -28,3 +28,14 @@ Supported operators:
 
 Built with .NET 6, self-contained (no runtime installation required).
 Source code available in the source/ subfolder.
+
+Building from source:
+  Requirements: .NET 6 SDK
+
+  Windows:
+    dotnet publish -c Release -r win-x64 --self-contained -p:PublishSingleFile=true
+
+  Linux:
+    dotnet publish -c Release -r linux-x64 --self-contained -p:PublishSingleFile=true
+
+  Output will be in bin/Release/net6.0/{platform}/publish/
