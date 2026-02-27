@@ -79,3 +79,20 @@ foreach (var entry in doc.RootElement.EnumerateObject())
     results.Add((objName, result));
 }
 
+// Sort in ascending order by result value
+var sorted = results.OrderBy(r => r.Result).ToList();
+
+// Write output.txt
+var lines = sorted.Select(r =>
+{
+    // Format number: if it integer - do not show decimals - otherwise show decimals
+    string formatted = r.Result % 1 == 0
+        ? ((long)r.Result).ToString()
+        : r.Result.ToString("G");
+
+    return $"{r.Name}: {formatted}";
+});
+
+File.WriteAllText(outputPath, string.Join("\n", lines));
+
+Console.WriteLine($"Task sucessfully completed! Results written to {outputPath}");
